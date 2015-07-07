@@ -164,14 +164,14 @@
 						</td>	
 					</tr>
 					<!-- If the driver is under age, charge the driver -->
-					<!-- <tr>
+					 <tr class = "underage_row" style = "display: none;">
 						<td>
 							<label>Underage driver</label>
 						</td>
 						<td>
 							<p>$20/day</p>
 						</td>	
-					</tr> -->
+					</tr>
 
 					<!-- If drop off location is different from pick up location, charge the customer $20 -->
 
@@ -274,6 +274,27 @@
 			var total = parseInt($('.total_price span').text());
 			var a = parseInt($(this).data("price"));
 			$('.total_price span').html(total - a);
+		}
+	});
+	
+	var applied = false;
+		$('#driversage').change(function(){
+		
+		
+		if($(this).val() == "21-24"){
+			$('.underage_row').fadeIn();
+			var total = parseInt($('.total_price span').text());
+			$('.total_price span').html(total + 20);
+			applied = true;
+		}else{
+			$('.underage_row').fadeOut();
+			var total = parseInt($('.total_price span').text());
+			if(applied){
+				$('.total_price span').html(total-20);
+				applied = false;
+			}else{
+				$('.total_price span').html(total);
+			}
 		}
 	});
 	
