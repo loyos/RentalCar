@@ -1,7 +1,7 @@
 <table>
 	<tr>
 		<td> Car Info:</td>
-		<td> <?php echo $car_info['Car']['name']. "  /  ". $car_info['Car']['year']. $car_info['Car']['price']; ?> </td>
+		<td> <?php echo $car_info['Car']['name']. "  /  ". $car_info['Car']['year']. "  /  ".  $car_info['Car']['price']; ?> </td>
 	</tr>
 	<tr>
 		<td> First Name:</td>
