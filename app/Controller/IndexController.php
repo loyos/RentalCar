@@ -19,14 +19,20 @@ class IndexController extends AppController {
     public function view($id = null) {
 		
 		if ($this->request->is('post')) {
+			
+			$info = $this->request->data;
+			
+			// debug($info);
 		
 			$this->Request->save($this->request->data);
 			$this->Session->setFlash('Your request has been sent.');
 			$Email = new CakeEmail();
-			$Email->from(array('me@example.com' => 'My Site'))
+			$Email->viewVars(array('info' => $info));
+			$Email->template('request')
+				->emailFormat('html')
 				->to('loyenrique1@gmail.com')
-				->subject('About')
-				->send('My message');
+				->from('app@domain.com')
+				->send();
 		}
 	
         $this->Car->id = $id;
