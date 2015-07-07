@@ -19,7 +19,7 @@
 			</div>
 			<div class="field size">
 				<label for="dropofflocation">Drop-off location:</label>
-				<select name="pick-up location" id="pickuplocation">
+				<select name="pick-up location" id="dropofflocation">
 					<option value="0">Select a drop-off location</option>
 					<option value="Miami Beach">Miami Beach</option>
 					<option value="Miami Airport">Miami Airport</option>
@@ -175,42 +175,42 @@
 
 					<!-- If drop off location is different from pick up location, charge the customer $20 -->
 
-					<!-- <tr>
+					 <tr class = "pickdrop_charge" style = "display: none;">
 						<td>
 							<label>Pick-up/Drop-off charge (if different)</label>
 						</td>
 						<td>
 							<p>$20/day</p>
 						</td>	
-					</tr> -->
+					</tr>
 
 					<!-- sub-total -->
 
-					<!-- <tr>
+					 <tr>
 						<td>
 							<label>Sub-total</label>
 						</td>
 						<td>
-							<p>?</p>
+							<p class = "total_price"><?php echo "$<span>".$car['Car']["price"]."</span>/day"; ?></p>
 						</td>	
-					</tr> -->
+					</tr>
 
 					<!-- Sale tax is 7% of the sub-total-->
 
-					<!-- <tr>
+					 <tr>
 						<td>
 							<label>Sale tax</label>
 						</td>
 						<td>
-							<p>7%</p>
+							<p>7% <span class = "tax" style = "color: white;">  </span></p>
 						</td>	
-					</tr> -->
+					</tr>
 					<tr>
 						<td>
 							<label>Total</label>
 						</td>
 						<td>
-							<p class = "total_price"><?php echo "$<span>".$car['Car']["price"]."</span>/day"; ?></p>
+							<p class = "final_price"><span> </span></p>
 						</td>	
 					</tr>	
 				</tbody>
@@ -275,6 +275,7 @@
 			var a = parseInt($(this).data("price"));
 			$('.total_price span').html(total - a);
 		}
+		update_total();
 	});
 	
 	var applied = false;
@@ -296,13 +297,57 @@
 				$('.total_price span').html(total);
 			}
 		}
+		update_total();
+	});
+	
+	var pickdrop_applied = false;
+	
+	$('#pickuplocation, #dropofflocation').change(function(){
+		var pick_up = $('#pickuplocation').val();
+		var drop_off = $('#dropofflocation').val();
+		
+		if((pick_up != drop_off)){
+			$('.pickdrop_charge').fadeIn();
+			var total = parseInt($('.total_price span').text());
+			
+			if(!pickdrop_applied){
+				$('.total_price span').html(total + 20);
+			}
+			pickdrop_applied = true;
+		}else{
+			$('.pickdrop_charge').fadeOut();
+			var total = parseInt($('.total_price span').text());
+			if(pickdrop_applied){
+				$('.total_price span').html(total-20);
+				pickdrop_applied = false;
+			}else{
+				$('.total_price span').html(total);
+			}
+		}
+		update_total();
 	});
 	
 	$(function(){
-	$("#dropOffDate, #pickUpDate ").datepicker({
-		minDate: new Date()
+		$('.final_price').html('$'+ $('.total_price span').text());
 	});
-
-});
+	
+	
+	$(function(){
+		$("#dropOffDate, #pickUpDate ").datepicker({
+			minDate: new Date()
+		});
+	});
+	
+	function update_total(){
+		var sub_total = parseInt($('.total_price span').text());
+		var final_price = sub_total * 0.07 + sub_total;
+		var tax =   Math.floor(sub_total * 0.07);
+		$('.tax').html(' ($'+ tax +')');
+		$('.final_price').html('$'+ final_price);
+	}
+	
+	$(function(){
+		update_total();
+	});
 	
 </script>

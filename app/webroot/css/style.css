@@ -176,6 +176,10 @@ span{
 	color: white;
 }
 
+.final_price {
+	font-size: 20px;
+}
+
 select{
 	color: black;
 }
