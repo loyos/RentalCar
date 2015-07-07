@@ -9,10 +9,10 @@
 						echo $this->Html->image('cars/'.$c['Car']['url'], array('width' => '262px', 'height' => '136px'));
 						echo '<h3>'. $c['Car']['name']. '<br>'. $c['Car']['year']  .'</h3>';
 					
-						echo $this->Html->link('Book Now',array('controller' => 'index', 'action' => 'view', $c['Car']['id']));
+						echo $this->Html->link('Book Now',array('controller' => 'index', 'action' => 'view', $c['Car']['id']), array('class' => 'boton'));
 					?>
 					
-					<a href="vehicle.php?id=101"><input class="boton" type="submit" value="BOOK NOW"></input></a>
+					<!-- <a href="vehicle.php?id=101"><input class="boton" type="submit" value="BOOK NOW"></input></a> -->
 					<div class="bottom-line">
 						<table class="car-table">
 							<tr>
