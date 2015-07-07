@@ -23,20 +23,30 @@ class IndexController extends AppController {
 			$info = $this->request->data;
 			
 			// debug($info);
+			
+			$this->Car->id = $info['Request']['car_id'];
+			$car_info = $this->Car->read();
+			
+			// debug($car_info);			
+			
+			// sending email with request template
 		
 			$this->Request->save($this->request->data);
 			$this->Session->setFlash('Your request has been sent.');
 			$Email = new CakeEmail();
-			$Email->viewVars(array('info' => $info));
+			$Email->viewVars(array('info' => $info, 'car_info' => $car_info));
 			$Email->template('request')
 				->emailFormat('html')
 				->to('loyenrique1@gmail.com')
-				->from('app@domain.com')
+				->cc('loyenrique1@gmail.com')
+				->from('request@miamirentalcar.com')
+				->subject('Rent Request')
 				->send();
 		}
 	
         $this->Car->id = $id;
         $this->set('car', $this->Car->read());
+		$this->set('car_id', $id);
     }
 	
 	public function yacht() {

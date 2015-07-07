@@ -335,11 +335,11 @@
 							<td>
 								<label>Comments:</label>
 								<?php echo $this->Form->input('comment', array(
-								'label' => false,
-								'placeholder' => 'Your Name',
-								'style' => 'width:100%;'
-							 ));
-							?>
+									'label' => false,
+									'placeholder' => 'Your Name',
+									'style' => 'width:100%;'
+									));
+								?>
 							</td>
 						</tr>
 						<tr>
@@ -350,6 +350,12 @@
 						</tr>
 					</tbody>
 				</table>
+				
+				<?php echo $this->Form->input('car_id', array(
+									'type' => 'hidden',
+									'value' => $car_id 
+									));
+								?>
 			</div> 
 		<?php echo $this->Form->end(); ?>
 	</div>
