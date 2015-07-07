@@ -6,83 +6,108 @@
 				echo $this->Html->image('cars/' . $car['Car']['url']);
 			?>
 		</div>
-		<div class="reservation col-md-6">	
-		<form action="vehicle.php">
+		<div class="reservation col-md-6">
+		
+		<?php echo $this->Form->create('Request'); ?>
+			
 			<div class="field size">
 				<label for="pickuplocation">Pick-up location:</label>
-				<select name="pick-up location" id="pickuplocation">
-					<option value="0">Select a pick-up location</option>
-					<option value="Miami Beach">Miami Beach</option>
-					<option value="Miami Airport">Miami Airport</option>
-					<option value="Ft. Lauderdale Airport">Ft. Lauderdale Airport</option>
-				</select>
+				<?php echo $this->Form->input('pick_up_loc', array(
+					'label' => false,
+					'id' => 'pickuplocation',
+					'options' => array(
+						'Miami Beach' => 'Miami Beach',
+						'Miami Airport' => 'Miami Airport',
+						'Ft. Lauderdale Airport' => 'Ft. Lauderdale Airport',
+					)
+				)); ?>
 			</div>
 			<div class="field size">
 				<label for="dropofflocation">Drop-off location:</label>
-				<select name="pick-up location" id="dropofflocation">
-					<option value="0">Select a drop-off location</option>
-					<option value="Miami Beach">Miami Beach</option>
-					<option value="Miami Airport">Miami Airport</option>
-					<option value="Ft. Lauderdale Airport">Ft. Lauderdale Airport</option>
-				</select>
+				<?php echo $this->Form->input('drop_off_loc', array(
+					'label' => false,
+					'id' => 'dropofflocation',
+					'options' => array(
+						'Miami Beach' => 'Miami Beach',
+						'Miami Airport' => 'Miami Airport',
+						'Ft. Lauderdale Airport' => 'Ft. Lauderdale Airport',
+					)
+				)); ?>
 			</div>
 			<div class="clear"></div>
 			<div class="field size">
 				<label>Pick-up date:</label>
-				<input name="pick-up Date" id="pickUpDate" type="text">
+				<?php echo $this->Form->input('pick_up_date', array(
+					'id' => 'pick_up_date',
+					'label' => false,
+				));
+				?>
 			</div>
 			<div class="field size">
 				<label for="pickuptime">Pick-up time:</label>
-				<select name="Pick-up Time" id="pickuptime">
-								<option value=""></option>
-								<option value="07:30 AM">7:30 AM</option>
-								<option value="08:00 AM">8:00 AM</option>
-								<option value="09:00 AM">9:00 AM</option>
-								<option value="10:00 AM">10:00 AM</option>
-								<option value="11:00 AM">11:00 AM</option>
-								<option selected="selected" value="12:00 PM">12:00 PM</option>
-								<option value="01:00 PM">1:00 PM</option>
-								<option value="02:00 PM">2:00 PM</option>
-								<option value="03:00 PM">3:00 PM</option>
-								<option value="04:00 PM">4:00 PM</option>
-								<option value="05:00 PM">5:00 PM</option>
-								<option value="06:00 PM">6:00 PM</option>
-								<option value="07:00 PM">7:00 PM</option>
-				</select>
+				<?php echo $this->Form->input('pick_up_time', array(
+					'label' => false,
+					'options' => array(
+						'07:30 AM' => '07:30 AM',
+						'08:00 AM' => '08:00 AM',
+						'09:00 AM' => '09:00 AM',
+						'10:00 AM' => '10:00 AM',
+						'11:00 AM' => '11:00 AM',
+						'12:00 PM' => '12:00 PM',
+						'1:00 PM' => '1:00 PM',
+						'2:00 PM' => '2:00 PM',
+						'3:00 PM' => '3:00 PM',
+						'4:00 PM' => '4:00 PM',
+						'5:00 PM' => '5:00 PM',
+						'6:00 PM' => '6:00 PM',
+						'7:00 PM' => '7:00 PM'
+					)
+				)); ?>
+				
 			</div>
 			<div class="clear"></div>
 			<!-- drop-off date -->
 			<div class="field size">
 				<label>Drop-off date:</label>
-				<input name="Drop-off Date" id="dropOffDate" type="text">
+				<?php echo $this->Form->input('drop_off_date', array(
+					'id' => 'drop_off_date',
+					'label' => false,
+				 ));
+				?>
 			</div>	
 				<!-- drop-off time -->
 			<div class="field size">	
 				<label for="dropofftime">Drop-off time:</label>
-				<select name="Pick-up Time" id="pickuptime" class="fchange">
-								<option value=""></option>
-								<option value="07:30 AM">7:30 AM</option>
-								<option value="08:00 AM">8:00 AM</option>
-								<option value="09:00 AM">9:00 AM</option>
-								<option value="10:00 AM">10:00 AM</option>
-								<option value="11:00 AM">11:00 AM</option>
-								<option selected="selected" value="12:00 PM">12:00 PM</option>
-								<option value="01:00 PM">1:00 PM</option>
-								<option value="02:00 PM">2:00 PM</option>
-								<option value="03:00 PM">3:00 PM</option>
-								<option value="04:00 PM">4:00 PM</option>
-								<option value="05:00 PM">5:00 PM</option>
-								<option value="06:00 PM">6:00 PM</option>
-								<option value="07:00 PM">7:00 PM</option>
-				</select>
+				<?php echo $this->Form->input('drop_off_time', array(
+					'label' => false,
+					'options' => array(
+						'07:30 AM' => '07:30 AM',
+						'08:00 AM' => '08:00 AM',
+						'09:00 AM' => '09:00 AM',
+						'10:00 AM' => '10:00 AM',
+						'11:00 AM' => '11:00 AM',
+						'12:00 PM' => '12:00 PM',
+						'1:00 PM' => '1:00 PM',
+						'2:00 PM' => '2:00 PM',
+						'3:00 PM' => '3:00 PM',
+						'4:00 PM' => '4:00 PM',
+						'5:00 PM' => '5:00 PM',
+						'6:00 PM' => '6:00 PM',
+						'7:00 PM' => '7:00 PM'
+					)
+				)); ?>
 			</div>
 			<div class="field size">
 				<label for="driversage">Driver's age:</label>
-				<select name="drivers age" id="driversage">
-					<option value="0">Select</option>
-					<option value="21-24">21-24</option>
-					<option value="25 and up">25 and up</option>
-				</select>
+				
+				<?php echo $this->Form->input('driver_age', array(
+					'label' => false,
+					'id' => 'driversage',
+					'options' => array(
+						'25 and up' => '25 and up',
+						'21-24' => '21-24',
+					)
+				)); ?>
 			</div>
 		</div>
 	</div>
@@ -95,7 +120,14 @@
 				<tbody>
 					<tr>
 						<td>
-							<input type="checkbox" class = "check" data-price = "23">
+							<?php
+								echo $this->Form->checkbox('loss_damage', array(
+									'value' => '23',
+									'class' => 'check',
+									'data-price' => '23'
+								));
+							?>
+						<!--	<input name = "loss_damage_waiver" value = "23" type="checkbox" class = "check" data-price = "23"> -->
 						</td>
 						<td>
 							<label>Loss damage waiver</label>
@@ -106,7 +138,15 @@
 					</tr>
 					<tr>
 						<td>
-							<input type="checkbox" class = "check" data-price = "9">
+							<?php
+								echo $this->Form->checkbox('nav_sys', array(
+									'value' => '9',
+									'class' => 'check',
+									'data-price' => '9'
+								));
+							?>
+						
+						<!-- 	<input name = "nav_system" value = "9" type="checkbox" class = "check" data-price = "9"> -->
 						</td>
 						<td>
 							<label>Navigation system</label>
@@ -117,7 +157,16 @@
 					</tr>
 					<tr>
 						<td>
-							<input type="checkbox" class = "check" data-price = "8">
+						
+							<?php
+								echo $this->Form->checkbox('toll_service', array(
+									'value' => '8',
+									'class' => 'check',
+									'data-price' => '8'
+								));
+							?>
+						
+							<!-- <input name = "toll_service" value = "8" type="checkbox" class = "check" data-price = "8"> -->
 						</td>
 						<td>
 							<label>Toll service</label>
@@ -128,7 +177,16 @@
 					</tr>
 					<tr>
 						<td>
-							<input type="checkbox" class = "check" data-price = "5">
+						
+							<?php
+							echo $this->Form->checkbox('child_seat', array(
+								'value' => '5',
+								'class' => 'check',
+								'data-price' => '5'
+							));
+							?>
+							
+						<!--	<input name = "child_seat" value = "5" type="checkbox" class = "check" data-price = "5"> -->
 						</td>
 						<td>
 							<label>Child safety seat</label>
@@ -139,7 +197,16 @@
 					</tr>
 					<tr>
 						<td>
-							<input type="checkbox" class = "check" data-price = "20">
+							
+							<?php
+							echo $this->Form->checkbox('extra_driver', array(
+								'value' => '20',
+								'class' => 'check',
+								'data-price' => '20'
+							));
+							?>
+						
+							<!-- <input name = "extra_driver" value = "20" type="checkbox" class = "check" data-price = "20"> -->
 						</td>
 						<td>
 							<label>Additional driver</label>
@@ -223,21 +290,41 @@
 					<tr>
 						<td>
 							<label>First Name:</label>
-							<input type="text" name="fname" value="<?php echo (isset($fname) ? $fname : ""); ?>" placeholder="Your Name"style="width:90%">
+							<?php echo $this->Form->input('first_name', array(
+								'label' => false,
+								'placeholder' => 'Your Name',
+								'style' => 'width:90%;'
+							 ));
+							?>
 						</td>
 						<td>
 							<label>Last Name:</label>
-							<input type="text" name="lname" value="<?php echo (isset($lname) ? $lname : ""); ?>" placeholder="Your Last Name">
+							<?php echo $this->Form->input('last_name', array(
+								'label' => false,
+								'placeholder' => 'Your Last Name',
+								'style' => 'width:90%;'
+							 ));
+							?>
 						</td>
 					</tr>
 					<tr>
 						<td>
 							<label>Phone:</label>
-							<input type="text" name="phone" value="<?php echo (isset($phone) ? $phone : ""); ?>" placeholder="Phone Number" style="width:90%">
+							<?php echo $this->Form->input('phone', array(
+								'label' => false,
+								'placeholder' => 'Your Phone',
+								'style' => 'width:90%;'
+							 ));
+							?>
 						</td>
 						<td>
 							<label>Email:</label>
-							<input type="text" name="email" value="<?php echo (isset($email) ? $email : ""); ?>" placeholder="Your email">
+							<?php echo $this->Form->input('email', array(
+								'label' => false,
+								'placeholder' => 'Your Email',
+								'style' => 'width:90%;'
+							 ));
+							?>
 						</td>
 					</tr>
 					</tbody>
@@ -247,24 +334,30 @@
 						<tr>
 							<td>
 								<label>Comments:</label>
-								<textarea name="mess" style="width:100%"></textarea>
+								<?php echo $this->Form->input('comment', array(
+								'label' => false,
+								'placeholder' => 'Your Name',
+								'style' => 'width:100%;'
+							 ));
+							?>
 							</td>
 						</tr>
 						<tr>
 							<td>
-								<button class="boton" value="send" style="margin-top:15px">Submit</button>
+								<?php echo $this->Form->button('Submit', array('type' => 'submit', 'class' => 'boton', 'style' => "margin-top:15px")); ?>
+								<!-- <button class="boton" value="send" style="margin-top:15px">Submit</button> -->
 							</td>
 						</tr>
 					</tbody>
 				</table>
 			</div> 
-		</form>	
+		<?php echo $this->Form->end(); ?>
 	</div>
 </div>
 
 <script>
 	
-	$('.check').change(function(){
+	$('.check').change(function(){  // update price when check any checkbox
 		
 		if($(this).is(':checked')){
 			var total = parseInt($('.total_price span').text());
@@ -279,8 +372,7 @@
 	});
 	
 	var applied = false;
-		$('#driversage').change(function(){
-		
+		$('#driversage').change(function(){  // underage driver fee 		
 		
 		if($(this).val() == "21-24"){
 			$('.underage_row').fadeIn();
@@ -333,7 +425,7 @@
 	
 	
 	$(function(){
-		$("#dropOffDate, #pickUpDate ").datepicker({
+		$("#pick_up_date, #drop_off_date ").datepicker({
 			minDate: new Date()
 		});
 	});
