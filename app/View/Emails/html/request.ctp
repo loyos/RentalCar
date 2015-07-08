@@ -1,7 +1,7 @@
 <table>
 	<tr>
 		<td> Car Info:</td>
-		<td> <?php echo $car_info['Car']['name']. "  /  ". $car_info['Car']['year']. "  /  ".  $car_info['Car']['price']; ?> </td>
+		<td> <?php echo $car_info['Car']['name']. "  /  ". $car_info['Car']['year']. "  /  $".  $car_info['Car']['price']; ?> </td>
 	</tr>
 	<tr>
 		<td> First Name:</td>
@@ -53,22 +53,22 @@
 	</tr>
 	<tr>
 		<td> Loss damage waiver:</td>
-		<td> <?php echo $info['Request']['loss_damage']; ?> </td>
+		<td> <?php echo "$". $info['Request']['loss_damage']; ?> </td>
 	</tr>
 	<tr>
 		<td> Navigation system:</td>
-		<td> <?php echo $info['Request']['nav_sys']; ?> </td>
+		<td> <?php echo "$". $info['Request']['nav_sys']; ?> </td>
 	</tr>
 	<tr>
 		<td> Toll service:</td>
-		<td> <?php echo $info['Request']['toll_service']; ?> </td>
+		<td> <?php echo  "$". $info['Request']['toll_service']; ?> </td>
 	</tr>
 	<tr>
 		<td> Child safety seat:</td>
-		<td> <?php echo $info['Request']['child_seat']; ?> </td>
+		<td> <?php echo "$". $info['Request']['child_seat']; ?> </td>
 	</tr>
 	<tr>
 		<td> Additional driver:</td>
-		<td> <?php echo $info['Request']['extra_driver']; ?> </td>
+		<td> <?php echo "$". $info['Request']['extra_driver']; ?> </td>
 	</tr>
 </table>
