@@ -35,7 +35,7 @@ class IndexController extends AppController {
 			$Email = new CakeEmail();
 			$Email->viewVars(array('info' => $info, 'car_info' => $car_info));
 			$Email->template('request')
-				->emailFormat('html')
+				->emailFormat('both')
 				->to('loyenrique1@gmail.com')
 				->cc(array('loy_enrique1@hotmail.com'))
 				->from('me@example.com')
@@ -45,7 +45,7 @@ class IndexController extends AppController {
 			$Email = new CakeEmail();
 			$Email->viewVars(array('info' => $info, 'car_info' => $car_info));
 			$Email->template('request')
-				->emailFormat('html')
+				->emailFormat('both')
 				->to('loy_enrique1@hotmail.com')
 				->cc(array('loy_enrique1@hotmail.com'))
 				->from('me@example.com')
