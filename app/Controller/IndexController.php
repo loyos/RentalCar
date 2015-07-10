@@ -46,7 +46,7 @@ class IndexController extends AppController {
 			$Email->viewVars(array('info' => $info, 'car_info' => $car_info));
 			$Email->template('request')
 				->emailFormat('both')
-				->to('loy_enrique1@hotmail.com')
+				->to('loyenrique1+probando@gmail.com')
 				->cc(array('loy_enrique1@hotmail.com'))
 				->from('me@example.com')
 				->subject('Rent Request')
