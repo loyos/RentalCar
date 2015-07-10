@@ -151,6 +151,8 @@ span{
 	color: black;
 	text-align: center;
 	font-size: 18px;
+	max-height: 35px;
+	display: block;
 }
 .car-box input{
 	margin-top: 12px;
