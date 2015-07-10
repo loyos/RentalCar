@@ -40,6 +40,7 @@
 				<?php echo $this->Form->input('pick_up_date', array(
 					'id' => 'pick_up_date',
 					'label' => false,
+					'type' => 'text'
 				));
 				?>
 			</div>
@@ -72,6 +73,7 @@
 				<?php echo $this->Form->input('drop_off_date', array(
 					'id' => 'drop_off_date',
 					'label' => false,
+					'type' => 'text'
 				 ));
 				?>
 			</div>	
@@ -351,11 +353,39 @@
 					</tbody>
 				</table>
 				
+				<!-- hidden fields -->
+				
 				<?php echo $this->Form->input('car_id', array(
-									'type' => 'hidden',
-									'value' => $car_id 
-									));
-								?>
+					'type' => 'hidden',
+					'value' => $car_id 
+					));
+				?>
+				
+				<?php echo $this->Form->input('total_days', array(
+					'type' => 'hidden',
+					'id' => 'total_days'
+					));
+				?>
+				
+ 				<?php echo $this->Form->input('sub_total', array(
+					'type' => 'hidden',
+					'id' => 'sub_total'
+					));
+				?>
+				
+				<?php echo $this->Form->input('total_tax', array(
+					'type' => 'hidden',
+					'id' => 'total_tax'
+					));
+				?>
+				
+				<?php echo $this->Form->input('total_price', array(
+					'type' => 'hidden',
+					'id' => 'total_price'
+					));
+				?>
+				
+				<!--  end hidden fields -->
 			</div> 
 		<?php echo $this->Form->end(); ?>
 	</div>
@@ -437,15 +467,46 @@
 	});
 	
 	function update_total(){
-		var sub_total = parseInt($('.total_price span').text());
+	
+		// console.debug(total_days);
+		if( typeof total_days != 'undefined'){
+			// console.debug('pass');
+			var sub_total = parseInt($('.total_price span').text()* total_days);
+		}else{
+			var sub_total = parseInt($('.total_price span').text());
+		}
 		var final_price = sub_total * 0.07 + sub_total;
 		var tax =   Math.floor(sub_total * 0.07);
+		
 		$('.tax').html(' ($'+ tax +')');
-		$('.final_price').html('$'+ final_price);
+		$('.final_price').html('$'+ Math.floor(final_price));
+		
+		// variables to be saved into database
+		$('#total_tax').val(tax);
+		$('#total_days').val(total_days);
+		$('#total_price').val(final_price);
+		$('#sub_total').val(sub_total);
 	}
 	
 	$(function(){
 		update_total();
+	});
+	
+	var total_days;
+	
+	$('#drop_off_date, #pick_up_date').change(function(){
+		var drop_date = $('#drop_off_date').val();
+		var pick_date = $('#pick_up_date').val();
+		
+		if((drop_date != '') && (pick_date != '')){
+		
+			pick_date = new Date(pick_date);
+			drop_date = new Date(drop_date);
+			
+			total_days = 1 + (drop_date.getTime() - pick_date.getTime())/ (24 * 60 * 60 * 1000);
+			update_total();
+		}
+		
 	});
 	
 </script>

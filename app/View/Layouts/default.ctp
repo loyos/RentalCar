@@ -58,7 +58,8 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 		      	<div class="nav navbar-nav navbar-left">
 		      		<a href="index.php">
 						<!-- <img src="images/logo.png" style="width:120px; margin-top:5px;"> -->
-						<?php echo $this->Html->image('logo.png', array('style' => 'width:120px; margin-top:5px;')); ?>
+						<?php echo $this->Html->link($this->Html->image('logo.png', array('style' => 'width:120px; margin-top:5px;')), array('controller' => 'index', 'action' => 'index'), array('escape'=> false)); ?>
+						<?php // echo $this->Html->image('logo.png', array('style' => 'width:120px; margin-top:5px;')); ?>
 					</a>
 		      	</div>
 		      	<div class="collapse navbar-collapse" id="collapse">

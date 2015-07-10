@@ -71,4 +71,20 @@
 		<td> Additional driver:</td>
 		<td> <?php echo "$". $info['Request']['extra_driver']; ?> </td>
 	</tr>
+	<tr>
+		<td> Total days:</td>
+		<td> <?php echo "$". $info['Request']['total_days']; ?> </td>
+	</tr>
+	<tr>
+		<td> Sub Total:</td>
+		<td> <?php echo "$". $info['Request']['sub_total']; ?> </td>
+	</tr>
+	<tr>
+		<td> Total tax:</td>
+		<td> <?php echo "$". $info['Request']['total_tax']; ?> </td>
+	</tr>
+	<tr>
+		<td> Total Price:</td>
+		<td> <?php echo "$". $info['Request']['total_price']; ?> </td>
+	</tr>
 </table>

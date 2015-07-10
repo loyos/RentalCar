@@ -22,7 +22,7 @@ class IndexController extends AppController {
 			
 			$info = $this->request->data;
 			
-			// debug($info);
+			debug($info);
 			
 			$this->Car->id = $info['Request']['car_id'];
 			$car_info = $this->Car->read();
@@ -38,7 +38,7 @@ class IndexController extends AppController {
 			$Email->template('request')
 				->emailFormat('html')
 				->to('loyenrique1@gmail.com')
-				->cc('loyenrique_1@hotmail.com')
+				->cc(array('loyenrique_1@hotmail.com'))
 				->from('me@example.com')
 				->subject('Rent Request')
 				->send();
