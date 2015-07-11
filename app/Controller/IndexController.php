@@ -42,7 +42,7 @@ class IndexController extends AppController {
 				$Email->template('request')
 					->emailFormat('both')
 					->to('loyenrique1@gmail.com')
-					->cc(array('loy_enrique1@hotmail.com', 'gmontenegro500@gmail.com', 'info@miamibeachrentalcarusa.com'))
+					->cc(array('loy_enrique1@hotmail.com', 'gmontenegro500@gmail.com', 'info@miamibeachrentalcarusa.com', 'Erick29@gmail.com'))
 					->from('miamirental@no-reply.com')
 					->subject('Rent Request')
 					->send();
