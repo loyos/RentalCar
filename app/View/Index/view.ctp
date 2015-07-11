@@ -73,7 +73,7 @@
 				<?php echo $this->Form->input('drop_off_date', array(
 					'id' => 'drop_off_date',
 					'label' => false,
-					'type' => 'text'
+					// 'type' => 'text'
 				 ));
 				?>
 			</div>	

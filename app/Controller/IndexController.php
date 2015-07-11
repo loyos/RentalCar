@@ -22,28 +22,36 @@ class IndexController extends AppController {
 			
 			$info = $this->request->data;
 			
-			// debug($info);
-			
 			$this->Car->id = $info['Request']['car_id'];
-			$car_info = $this->Car->read();
-			
-			// debug($car_info);			
+			$car_info = $this->Car->read();	
 			
 			// sending email with request template
 		
-			$this->Request->save($this->request->data);
-			$Email = new CakeEmail();
-			$Email->viewVars(array('info' => $info, 'car_info' => $car_info));
-			$Email->template('request')
-				->emailFormat('both')
-				->to('loyenrique1@gmail.com')
-				->cc(array('loy_enrique1@hotmail.com'))
-				->from('miamirental@no-reply.com')
-				->subject('Rent Request')
-				->send();
+			$saved = $this->Request->save($this->request->data);
+			// debug($saved);
+			// $this->Request->set($this->request->data);
+			// if ($this->Request->validates()) {				
+			// } else {				
+				// $errors = $this->Request->validationErrors;
+				// debug($errors);
+			// }			
+			if($saved){  // send email and redirect home
 			
-			$this->Session->setFlash('Your request has been sent.');
-			$this->redirect(array('controller' => 'index', 'action' => 'index'));
+				$Email = new CakeEmail();
+				$Email->viewVars(array('info' => $info, 'car_info' => $car_info));
+				$Email->template('request')
+					->emailFormat('both')
+					->to('loyenrique1@gmail.com')
+					->cc(array('loy_enrique1@hotmail.com', 'gmontenegro500@gmail.com', 'info@miamibeachrentalcarusa.com'))
+					->from('miamirental@no-reply.com')
+					->subject('Rent Request')
+					->send();
+				
+				$this->Session->setFlash('Your request has been sent.');
+				$this->redirect(array('controller' => 'index', 'action' => 'index'));
+			}else{
+				$this->Session->setFlash('Error, please check fields');
+			}
 		}
 	
         $this->Car->id = $id;
